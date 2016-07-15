@@ -1,5 +1,5 @@
 # -*- coding:utf8 -*-
-__author__ = 'Sky'
+__author__ = 'SmallSu'
 
 from flask import Flask
 from kvdb_module import KvdbStorage
@@ -17,4 +17,4 @@ app.config.from_object('config')
 kv = KvdbStorage()
 
 # 导入view，否则not found
-import views
+import Application.views

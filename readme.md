@@ -8,11 +8,32 @@ Python Flask项目框架
 ## 概述
 >
 
-* 基于flask框架，部署于SAE，七牛JS-SDK(包含Plupload插件)用于上传并保存图片文件，KVDB数据库
-* 简化七牛JS-SDK（上传，预览，加载）到一个页面，采用瀑布流式布局（Blockits）
-* 响应式布局，可兼容PC端和移动端（chrome）
+* 基于flask框架，部署于SAE，七牛SDK，KVDB数据库
+* 主要目录结构为
 
-![预览图]()
+~~~
+
+--index.wsgi        # SAE线上使用的主程序入口
+--dev_server.py     # PyCharm本地调试的主程序入口
+
+--docs              # 和Readme.md相关的说明文档
+--virtualenv.bundle # 纯Python的代码包,用于SAE之类云环境没有相关库文件而主动添加上去
+--static            # 静态库文件,比如bootstrarp\jQuery之类
+
+--Application
+
+    --view          # 路由,处理各种http请求
+    --templates     # 模板路径,供给路由渲染
+    
+    --public        # 公开类处理工具 杂物等(不符合MVC模式的一些杂项代码)
+    --protected     # 自定义数据模型model 控制器controller (基本自己写的)
+    --private       # 全局公用的一些方法等(写好的轮子,建议别动)
+
+~~~
+
+
+![预览图1](/docs/截图1.png)
+![预览图2](/docs/截图2.png)
 
 ---
 
@@ -30,9 +51,8 @@ Python Flask项目框架
 
 ---
 ## 修改历史
-* 2016-07-15：
+* 2016-07-15：第一次规划该框架
 
 ## 说明
 1. flask相关可直接看[flask快速上手](http://dormousehole.readthedocs.org/en/latest/quickstart.html#)
 2. 七牛上传仔细查阅[七牛Python官方文档](http://developer.qiniu.com/docs/v6/sdk/python-sdk.html)
-3. 瀑布流插件[Blockits](http://www.inwebson.com/jquery/blocksit-js-dynamic-grid-layout-jquery-plugin/)详情

@@ -7,9 +7,10 @@ from flask import render_template, request, jsonify, make_response, redirect, ur
 from functools import wraps
 
 import config
-from kvdb_module import decode_dict
-from myapp import app, kv
-from upload import get_token, del_pic, QiniuUpload
+from Application import app
+
+from private.kvdb_module import decode_dict
+from private.upload import get_token, del_pic, QiniuUpload
 
 
 # 允许跨域请求
@@ -34,15 +35,21 @@ def before_request():
 def teardown_request(func):
     pass
 
+@app.errorhandler(403)
+def internal_error(error):
+    return render_template('403.html'), 403
+
+@app.errorhandler(404)
+def internal_error(error):
+    return render_template('404.html'), 404
 
 @app.errorhandler(500)
 def internal_error(error):
     return render_template('500.html'), 500
 
-
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    return render_template('common.html')
+    return render_template('common.html',content = u"我测试一下内容看看可不可以" )
     #return redirect(url_for('pic_bed'))
 
 
