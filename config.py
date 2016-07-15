@@ -1,5 +1,5 @@
 # -*- coding:utf8 -*-
-__author__ = 'Sky'
+__author__ = 'SmallSu'
 
 # flask-app密钥
 SECRET_KEY = 'app-secret-key'
