@@ -1,5 +1,5 @@
 # -*- coding:utf8 -*-
-__author__ = 'Sky'
+__author__ = 'SmallSu'
 
 import json
 from datetime import datetime
@@ -42,7 +42,8 @@ def internal_error(error):
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    return redirect(url_for('pic_bed'))
+    return render_template('common.html')
+    #return redirect(url_for('pic_bed'))
 
 
 # 修改锚点位置
