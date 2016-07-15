@@ -1,0 +1,2 @@
+grizzled-python>=1.0
+enum>=0.4.3

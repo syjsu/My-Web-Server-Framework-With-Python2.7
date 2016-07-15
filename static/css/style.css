@@ -1,0 +1,342 @@
+/*
+    by skywatcher@2015-12-31
+    version:1.0
+*/
+ul, li {
+  list-style: none;
+  padding: 0;
+}
+
+nav {
+    position: fixed;
+    z-index: 101;
+}
+
+.container{
+    position: absolute;
+     top: 4rem;
+}
+
+.container .modal{
+    max-height: 100%;
+    z-index: 100;
+    width: 100%;
+    background-color: rgba(35, 35, 35, 0.5);
+}
+
+.container .modal-content{
+    width: 80%;
+    margin: 3rem auto;
+    margin-bottom: 6rem;
+    background-color: #fafafa;
+    border-radius: 2px;
+    will-change: top, opacity;
+    box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+}
+
+a:active, a:hover {
+    outline: none;
+    text-decoration: none;
+}
+
+.nav-wrapper a.brand-logo{
+    padding: 0 15px 0 15px;
+    height: 100%;
+    /*background: url("/static/img/logo.jpg") center left no-repeat;*/
+}
+
+.logo_img{
+    width: 48px;
+    height: 48px;
+    margin: 8px 10px 0 10px;
+    border-radius:50% ;
+}
+
+@media (max-width:601px) {
+    .logo_img{
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width:601px) {
+    .logo_img{
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.brand-logo>p{
+    float: right;
+    margin: auto;
+}
+
+nav ul a{
+    font-size: 18px;
+}
+
+nav.dropdown-content{
+    min-width: 120px;
+    right: 0;
+}
+
+ul#dropdown_menu.dropdown-content.active{
+    min-width: 120px;
+    right: 0;
+    margin-top: 64px;
+}
+
+.overflow-visible {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/*upload modal*/
+.mobile-display, .mobile-display-block {
+    display: none;
+    visibility: hidden;
+}
+
+@media (max-width: 768px){
+    .mobile-display-block {
+        display: block;
+        visibility: visible;
+    }
+}
+
+.modal-close-button-mobile, .profileStats .number {
+    text-align: right;
+    position: absolute;
+    top: -30px;
+    right: -30px;
+}
+
+.modal-close-button-mobile>i {
+    font-size: 2.6rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #f15e0c;
+}
+
+@media (max-width: 768px){
+    .mobile-hidden {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+.modal-close-button {
+    position: absolute;
+    top: -52px;
+    right: -52px;
+    z-index: 1000;
+}
+
+.modal-close-button>i {
+    color: #f15e0c;
+}
+
+.modal-title{
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+.modal-content.input-field{
+    margin-top: 0;
+}
+
+.modal-content input{
+    margin-bottom: 5px;
+}
+
+.modal-content textarea{
+    min-height: 2rem;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.modal-content .row{
+    margin-bottom: 0;
+}
+
+.modal-content .row .submit {
+    float: right;
+    margin-right: 0.1rem;
+}
+/*上传图片列表*/
+.upload-list {
+    border: 2px dotted #E5E5E5;
+    margin: 20px 12px;
+    min-height: 100px;
+}
+
+.upload-list .file-list {
+    height: auto;
+    line-height: 36px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #E5E5E5;
+    padding: 10px;
+}
+
+.upload-list .thumb {
+  float: left;
+  width: 80px;
+  height: 80px;
+}
+
+.upload-list .attachment-meta {
+  height: 28px;
+  overflow: hidden;
+  line-height: 31px;
+  margin-left: 160px;
+  margin-top: 26px;
+}
+
+@media screen and (max-width:768px) {
+    .upload-list .attachment-meta {
+      margin-left: 0;
+    }
+}
+
+.upload-list .remove-attachment {
+  display: block;
+  float: right;
+  background-color: #ea4c89;
+  color: #fff;
+  border-radius: 30px;
+  padding: 0 15px;
+  height: 28px;
+  /* margin: 0; */
+  line-height: 28px;
+  width: 100px;
+  text-align: center;
+}
+
+.content{
+    padding-top: 64px;
+}
+
+.contain{
+	margin:0 auto;
+	padding-bottom: 10px;
+    position:relative;
+}
+
+@media screen and (max-width: 450px) {
+    .contain {
+        width: 95% !important;
+    }
+}
+
+.grid{
+	min-height:100px;
+	padding: 0px;
+	background:#fff;
+	margin:8px;
+	font-size:12px;
+	float:left;
+	box-shadow: 0 1px 3px rgba(34,25,25,0.4);
+	-moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4);
+	-webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4);
+
+	-webkit-transition: top 1s ease, left 1s ease;
+	-moz-transition: top 1s ease, left 1s ease;
+	-o-transition: top 1s ease, left 1s ease;
+	-ms-transition: top 1s ease, left 1s ease;
+}
+
+.grid strong {
+	border-bottom:1px solid #ccc;
+	margin:10px 0 0;
+	display:block;
+	padding:0 16px 5px;
+	font-size:17px;
+}
+
+@media screen and (min-width: 768px) {
+    .grid{
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .grid strong{
+        padding: 0 5px 5px;
+        font-size: 13px;
+    }
+}
+.grid .description{
+	border-top: 1px solid #F2F2F2;
+    background: #FAFAFA;
+    position: relative;
+    padding: 0 15px 10px 15px;
+}
+
+.grid .meta{
+	color:#777;
+	font-style:italic;
+	text-align:right;
+}
+
+.grid .imgholder{
+	max-height:800px;
+	overflow:hidden;
+}
+
+.grid .imgholder img{
+	max-width:100%;
+	background:#ccc;
+	display:block;
+	margin:0 auto;
+}
+
+.grid .stop {
+	margin-top: -10px;
+	display: none;
+	z-index: 1;
+	width: 100%;
+	height: 12px;
+	left: 0;
+	background: url(/static/img/long_image_shadow.png) repeat-x 4px top;
+	position: absolute;
+}
+
+.about-modal{
+    height: 100%;
+}
+
+.about-modal .modal-content{
+    width: 500px;
+    padding: 0;
+    border-radius: 4px;
+}
+
+.about-modal .card{
+    margin: 0;
+}
+
+.about-modal .col.s12.m6{
+    width: 100%;
+}
+
+.about-modal .row{
+    position: relative;
+}
+
+.about-modal .modal-close-button{
+    top: -2rem;
+    right: -1.2rem;
+}
+
+.about-modal .modal-close-button-mobile{
+    top: -10px;
+    right: 0;
+    z-index: 1;
+}
+
+.about-modal .card-content{
+    height: 200px;
+}

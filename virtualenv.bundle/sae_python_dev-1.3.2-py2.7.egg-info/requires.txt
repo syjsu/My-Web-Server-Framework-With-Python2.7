@@ -1,0 +1,7 @@
+Werkzeug
+pip
+PyYAML
+argparse
+grizzled-python==1.0.1
+sqlcmd
+prettytable

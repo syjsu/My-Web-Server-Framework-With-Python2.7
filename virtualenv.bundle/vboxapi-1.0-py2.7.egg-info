@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: vboxapi
+Version: 1.0
+Summary: Python interface to VirtualBox
+Home-page: http://www.virtualbox.org
+Author: Oracle Corp.
+Author-email: vbox-dev@virtualbox.org
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN

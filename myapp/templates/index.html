@@ -1,0 +1,272 @@
+{% extends 'base.html' %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block title %}PicBucket{% endblock %}
+
+{% block content %}
+
+{# 七牛信息 #}
+<input type="hidden" id="domain" value="{{ domain }}">
+<input type="hidden" id="uptoken_url" value="/uptoken">
+
+{# 下拉菜单 #}
+<ul id="dropdown_menu" class="dropdown-content">
+  <li><a id="show_upload">上 传</a></li>
+  <li><a href="#">我的Bucket</a></li>
+  <li class="divider"></li>
+  <li><a href="#">退 出</a></li>
+  <li><a id="about_me" href="#">关 于</a></li>
+</ul>
+<nav id="main-nav">
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo">
+            <img class="logo_img" src="/static/img/logo.jpg">
+            <p>PicBucket</p>
+        </a>
+        <ul class="right hide-on-med-and-down">
+            <li id="picbed" class="active"><a class="nav_active" href="">图 床</a></li>
+            <li><a href="">美 图</a></li>
+            <li id="file"><a href="">云 盘</a></li>
+            <li><a href="">API</a></li>
+            <li><a class="dropdown-button" href="#" data-activates="dropdown_menu">SkyWatcher<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+    </div>
+</nav>
+{# 内容加载 #}
+<section id="pics" class="content" style="display: none">
+    <div id="contain" class="contain">
+        {% for item in data %}
+            <div class="grid" data-key="{{ item['key'] }}">
+                <div class="imgholder">
+                    <a class="fopLink" data-key="{{ item['upkey'] }}">
+                        <img class="img_load" src="{{ item['url'] }}" />
+                    </a>
+                </div>
+                <span class="stop"></span>
+                <strong>{{ item['object'] }}</strong>
+                <div class="description">
+                    <p>{{ item['words'] }}</p>
+                    <div class="meta">by {{ item['author'] }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {# 弹出框 #}
+    <div class="container">
+        {# 上传弹出框 #}
+        <div id="upload_modal" class="overflow-visible modal card center-align">
+            <div class="modal-content">
+                <div class="modal-title">
+                    <div id="upload_mobile_close" class="modal-close-button-mobile modal-close mobile-display-block">
+                        <i class="material-icons">clear</i>
+                    </div>
+                    <button id="upload_close"
+                            class="btn-floating btn-large waves-effect waves-orange-100 white modal-close modal-close-button mobile-hidden">
+                        <i class="material-icons">clear</i>
+                    </button>
+                    <h5>文件上传</h5>
+                </div>
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="input_text" type="text" length="10" placeholder="图片标题">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="textarea1" class="materialize-textarea" length="120" placeholder="图片详细描述（#作者#）"></textarea>
+                            </div>
+                        </div>
+                        <div class="file-field input-field">
+                            <div class="btn">
+                                <span>选择文件</span>
+                                <input type="file" multiple>
+                            </div>
+                            <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" placeholder="选择多个文件">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div id="upload_list" class="upload-list">
+                                <div id="o_1a8ebl3q3pkh5tj10sf1rj4ccnc" class="file-list progressContainer"
+                                     style="opacity: 1;"><img class="thumb"
+                                                              src="http://7ximdq.com1.z0.glb.clouddn.com/1452180934486?imageView2/1/w/100/h/100">
+
+                                    <div class="attachment-meta new"><span class="title">DSC00160.jpg(726 KB)</span><a
+                                            class="remove-attachment" data-id="1452180934486">删除</a></div>
+                                </div>
+                                <div id="o_1a8ebl3q31mjn1f9j1g3h4891v6fd" class="file-list progressContainer"
+                                     style="opacity: 1;"><img class="thumb"
+                                                              src="http://7ximdq.com1.z0.glb.clouddn.com/1452180937541?imageView2/1/w/100/h/100">
+
+                                    <div class="attachment-meta new"><span class="title">DSC01282.jpg(426 KB)</span><a
+                                            class="remove-attachment" data-id="1452180937541">删除</a></div>
+                                </div>
+                                <div id="o_1a8ebl3q31mjn1f9j1g3h4891v6fd" class="file-list progressContainer"
+                                     style="opacity: 1;"><img class="thumb"
+                                                              src="http://7ximdq.com1.z0.glb.clouddn.com/1452180937541?imageView2/1/w/100/h/100">
+
+                                    <div class="attachment-meta new"><span class="title">DSC01282.jpg(426 KB)</span><a
+                                            class="remove-attachment" data-id="1452180937541">删除</a></div>
+                                </div>
+                                <div id="o_1a8ebl3q31mjn1f9j1g3h4891v6fd" class="file-list progressContainer"
+                                     style="opacity: 1;"><img class="thumb"
+                                                              src="http://7ximdq.com1.z0.glb.clouddn.com/1452180937541?imageView2/1/w/100/h/100">
+
+                                    <div class="attachment-meta new"><span class="title">DSC01282.jpg(426 KB)</span><a
+                                            class="remove-attachment" data-id="1452180937541">删除</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row submit">
+                            <a class="waves-effect waves-light btn">
+                                <i class="material-icons left">file_upload</i>确定上传</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {# About对话框#}
+        <div id="about_modal" class="modal about-modal">
+            <div class="modal-content">
+                <div class="row">
+                    <button id="about_close" class="btn-floating btn-large waves-effect waves-orange-100 white modal-close modal-close-button mobile-hidden">
+                        <i class="material-icons">clear</i>
+                    </button>
+                    <div id="about_mobile_close" class="modal-close-button-mobile modal-close mobile-display-block">
+                        <i class="material-icons">clear</i>
+                    </div>
+                    <div class="col s12 m6">
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <span class="card-title">关于PicBucket</span>
+
+                                <p>我只是想让我的图片能有个安生之处，仅此而已！</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="http://skywatcher.me">SkyWatcher</a>
+                                <a href="https://github.com/beyondskyway/PicBucket">Fork</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {# 预览弹出框 #}
+        <div class="modal fade body view-img" id="myModal-img" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close close-bg" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">预览</h4>
+              </div>
+              <div class="modal-body">
+                <div class="modal-body-wrapper text-center">
+                    <img src="" alt="" data-key="" data-h="">
+                </div>
+                <div class="modal-body-footer">
+                    <div class="watermark">
+                        <span>水印：</span>
+                        <a href="#" data-watermark="NorthWest" class="btn btn-default">
+                            左上
+                        </a>
+                        <a href="#" data-watermark="SouthWest" class="btn btn-default">
+                            左下
+                        </a>
+                        <a href="#" data-watermark="NorthEast" class="btn btn-default">
+                            右上
+                        </a>
+                        <a href="#" data-watermark="SouthEast" class="btn btn-default">
+                            右下
+                        </a>
+                        <a href="#" data-watermark="false" class="btn btn-default">
+                            无
+                        </a>
+                    </div>
+                     <div class="imageView2">
+                        <span>缩略：</span>
+                        <a href="#" data-imageview="large" class="btn btn-default disabled">
+                            大
+                        </a>
+                        <a href="#" data-imageview="middle" class="btn btn-default">
+                            中
+                        </a>
+                        <a href="#" data-imageview="small" class="btn btn-default">
+                            小
+                        </a>
+                    </div>
+                    <div class="imageMogr2">
+                        <span>旋转：</span>
+                        <a href="#" data-imagemogr="left" class="btn btn-default no-disable-click" >
+                            逆时针
+                        </a>
+                        <a href="#" data-imagemogr="right" class="btn btn-default no-disable-click">
+                            顺时针
+                        </a>
+                        <a href="#" data-imagemogr="no-rotate" class="btn btn-default">
+                            无
+                        </a>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    {# 加载更多 #}
+    <div id="loading" class="loading">
+{#        <img id="load_img" src="/static/img/loading2.gif">#}
+{#        <span id="load_text">正在加载...</span>#}
+    </div>
+</section>
+{# 网盘文件加载 #}
+<section id="files" class="disk">
+    <div class="">
+        <ul class="collection with-header">
+            <li class="collection-header">
+                <ol class="breadcrumb">
+                    <li><a href="">全部文件</a></li>
+                    <li><a href="">返回上一级</a></li>
+                    <li class="active">SkyWatcher</li>
+                </ol>
+            </li>
+            <li class="collection-item avatar">
+                <i class="material-icons circle">folder</i>
+                <div class="row file-info">
+                    <div class="col s7 file-link"><a>afjlshelwf;kwelrwruwi</a></div>
+                    <div class="col s2 file-size">100M</div>
+                    <div class="col s3 file-time">2016-01-22 23:01:32</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+<section>
+<div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">mode_edit</i>
+    </a>
+    <ul>
+      <li><a id="file_upload" class="btn-floating red"><i class="material-icons">file_upload</i></a></li>
+      <li><a class="btn-floating yellow darken-1"><i class="material-icons">search</i></a></li>
+      <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+      <li><a class="btn-floating blue"><i class="material-icons">help</i></a></li>
+    </ul>
+</div>
+</section>
+{% endblock %}
+
+{% block script %}
+    {{ super() }}
+    <script type="text/javascript" src="/static/js/plupload/plupload.full.min.js"></script>
+    <script type="text/javascript" src="/static/js/plupload/i18n/zh_CN.js"></script>
+    <script type="text/javascript" src="/static/js/ui.js"></script>
+    <script type="text/javascript" src="/static/js/qiniu.js"></script>
+    <script type="text/javascript" src="/static/js/imagesloaded.pkgd.js"></script>
+    <script type="text/javascript" src="/static/js/bucket.js?ver=0.1.0"></script>
+    <script type="text/javascript" src="/static/js/blocksit.js"></script>
+{% endblock %}
+

@@ -1,0 +1,16 @@
+../sqlcmd/__init__.py
+../sqlcmd/config.py
+../sqlcmd/ecmd.py
+../sqlcmd/exception.py
+../sqlcmd/__init__.pyc
+../sqlcmd/config.pyc
+../sqlcmd/ecmd.pyc
+../sqlcmd/exception.pyc
+.
+dependency_links.txt
+entry_points.txt
+PKG-INFO
+requires.txt
+SOURCES.txt
+top_level.txt
+../../../../../usr/local/bin/sqlcmd
