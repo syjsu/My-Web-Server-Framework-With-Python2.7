@@ -30,10 +30,11 @@ def allow_cross_domain(fun):
 def before_request():
     pass
 
-
 @app.teardown_request
 def teardown_request(func):
     pass
+
+# 异常处理路由
 
 @app.errorhandler(403)
 def internal_error(error):
@@ -47,11 +48,30 @@ def internal_error(error):
 def internal_error(error):
     return render_template('500.html'), 500
 
+# url路由
+
+title={}
+
+title[u"首页"]	="index"
+title[u"关于我"]	="about"
+title[u"联系"]	="contant"
+title[u"其他"]	="other"
+
+friends={}
+
+friends[u"我的微博1"] = "http://weibo.com/syjsu"
+friends[u"我的微博2"] = "http://weibo.com/syjsu"
+friends[u"我的微博3"] = "http://weibo.com/syjsu"
+friends[u"我的微博4"] = "http://weibo.com/syjsu"
+friends[u"我的微博5"] = "http://weibo.com/syjsu"
+friends[u"我的微博6"] = "http://weibo.com/syjsu"
+friends[u"我的微博7"] = "http://weibo.com/syjsu"
+friends[u"我的微博8"] = "http://weibo.com/syjsu"
+
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    return render_template('common.html',content = u"我测试一下内容看看可不可以" )
+    return render_template('common.html',content = u"我测试一下看看内容显示",title = title, friends=friends )
     #return redirect(url_for('pic_bed'))
-
 
 # 修改锚点位置
 def change_anchor(content, suffix):
